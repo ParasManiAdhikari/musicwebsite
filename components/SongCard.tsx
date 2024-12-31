@@ -63,9 +63,15 @@ export default function SongCard({ title, artist, src }: SongCardProps) {
   }
 
   return (
-    <div className="rounded-lg border-2 border-pink-200 bg-white/80 p-4">
+    <div className="w-96 h-80 rounded-lg border-2 border-pink-200 bg-white/80 p-4 flex flex-col">
+      {/* Song Info */}
+      <div className="flex flex-col items-center mb-4">
+        <h3 className="font-pixel text-2xl text-green-600">{title}</h3>
+        <p className="text-sm text-pink-600">{artist}</p>
+      </div>
+
       {/* Seek Slider */}
-      <div>
+      <div className="flex flex-col items-center mb-4">
         <input
           type="range"
           min="0"
@@ -75,31 +81,25 @@ export default function SongCard({ title, artist, src }: SongCardProps) {
           onChange={handleSliderChange}
           className="w-full accent-pink-600"
         />
-        <div className="mt-2 flex justify-between text-sm font-pixel text-pink-700">
+        <div className="mt-2 flex justify-between text-sm font-pixel text-pink-700 w-full px-4">
           <span>{formatTime(currentTime)}</span>
           <span>{formatTime(duration)}</span>
         </div>
       </div>
 
-      <div className="flex items-center justify-between">
-        {/* Song Info */}
-        <div>
-          <h3 className="font-pixel text-lg text-green-600">{title}</h3>
-          <p className="text-sm text-pink-600">{artist}</p>
-        </div>
-
-        {/* Play/Pause Button */}
+      {/* Play/Pause Button */}
+      <div className="flex justify-center mb-4">
         <button
-          className="rounded-full bg-pink-100 p-2 hover:bg-pink-200"
+          className="rounded-full bg-pink-100 p-4 hover:bg-pink-200 transition-all transform scale-125"
           onClick={togglePlayPause}
         >
-          {isPlaying ? <Pause className="h-6 w-6 text-green-600" /> : <Play className="h-6 w-6 text-green-600" />}
+          {isPlaying ? <Pause className="h-10 w-10 text-green-600" /> : <Play className="h-10 w-10 text-green-600" />}
         </button>
       </div>
 
       {/* Visualizer: only show if playing */}
       {isPlaying && (
-        <div className="mt-4 flex items-end gap-1">
+        <div className="flex items-end justify-center gap-2 mt-4">
           {visualizerBars.map((height, i) => (
             <div
               key={i}

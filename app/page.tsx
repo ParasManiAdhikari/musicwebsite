@@ -2,11 +2,18 @@
 
 import { useState } from 'react'
 import { Heart, Music, GamepadIcon, BookOpen, Link2, MessageSquare } from 'lucide-react'
+import Link from 'next/link'
 import Window from '@/components/Window'
-import SongCard from '@/components/SongCard'
 
 export default function RetroWebsite() {
   const [visitorCount, setVisitorCount] = useState(1337)
+
+  const tracks = [
+    { title: 'Retro Beats', artist: 'DJ Pixel', category: 'Electronic', length: '3:45', id: 1 },
+    { title: 'Synthwave Dreams', artist: 'DJ Neon', category: 'Synthwave', length: '4:00', id: 2 },
+    { title: 'Pixelated World', artist: 'DJ Retro', category: 'Chiptune', length: '2:50', id: 3 },
+    { title: 'Cosmic Journey', artist: 'DJ Stellar', category: 'Ambient', length: '5:30', id: 4 },
+  ]
 
   return (
     <div className="min-h-screen bg-pink-50" style={{
@@ -30,7 +37,7 @@ export default function RetroWebsite() {
           <div className="space-y-4">
             <Window title="main menu ♡">
               <nav className="space-y-2 p-4">
-                {[
+                {[ 
                   { icon: Heart, text: 'about' },
                   { icon: Music, text: 'music + lyrics' },
                   { icon: GamepadIcon, text: 'games' },
@@ -62,16 +69,17 @@ export default function RetroWebsite() {
             <Window title="♡ about me ♡">
               <div className="space-y-4 p-6">
                 <div className="grid grid-cols-2 gap-4">
-                  {[1, 2, 3, 4].map((i) => (
-                    <div
-                      key={i}
-                      className="rounded-lg bg-pink-200/50 p-2"
-                    >
-                      <SongCard
-                        title="Retro Beats"
-                        artist="DJ Pixel"
-                        src='hot.mp3'
-                      />
+                  {tracks.map((track) => (
+                    <div key={track.id} className="rounded-lg bg-pink-200/50 p-2">
+                      <Link
+                        href={`/track`} // Link to the track detail page
+                        className="font-pixel text-pink-700 hover:underline"
+                      >
+                        <div>{track.title} - {track.artist}</div>
+                        <div className="text-sm text-pink-600">
+                          Category: {track.category} | Length: {track.length}
+                        </div>
+                      </Link>
                     </div>
                   ))}
                 </div>
