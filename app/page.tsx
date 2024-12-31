@@ -71,7 +71,7 @@ export default function RetroWebsite() {
                       <SongCard
                         title="Retro Beats"
                         artist="DJ Pixel"
-                        src='/audio/hot.mp3'
+                        src='hot.mp3'
                       />
                     </div>
                   ))}
