@@ -66,7 +66,7 @@ export default function RetroWebsite() {
                   {[1, 2, 3, 4].map((i) => (
                     <div
                       key={i}
-                      className="aspect-square rounded-lg bg-pink-200/50 p-2"
+                      className="rounded-lg bg-pink-200/50 p-2"
                     >
                       <SongCard
                         title="Retro Beats"

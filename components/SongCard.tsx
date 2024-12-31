@@ -13,6 +13,8 @@ export default function SongCard({ title, artist, src }: SongCardProps) {
   const [isPlaying, setIsPlaying] = useState(false)
   const [audio] = useState(new Audio(src))
   const [visualizerBars, setVisualizerBars] = useState<number[]>(new Array(10).fill(0))
+  const [currentTime, setCurrentTime] = useState(0)
+  const [duration, setDuration] = useState(0)
 
   const togglePlayPause = () => {
     if (isPlaying) {
@@ -23,8 +25,26 @@ export default function SongCard({ title, artist, src }: SongCardProps) {
     setIsPlaying(!isPlaying)
   }
 
+  const handleSliderChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const newTime = parseFloat(e.target.value)
+    audio.currentTime = newTime
+    setCurrentTime(newTime)
+  }
+
   useEffect(() => {
-    // Handle visualizer simulation
+    audio.addEventListener('timeupdate', () => setCurrentTime(audio.currentTime))
+    audio.addEventListener('loadedmetadata', () => setDuration(audio.duration))
+    audio.addEventListener('ended', () => setIsPlaying(false))
+
+    return () => {
+      audio.pause()
+      audio.removeEventListener('timeupdate', () => setCurrentTime(audio.currentTime))
+      audio.removeEventListener('loadedmetadata', () => setDuration(audio.duration))
+      audio.removeEventListener('ended', () => setIsPlaying(false))
+    }
+  }, [audio])
+
+  useEffect(() => {
     const interval = setInterval(() => {
       if (isPlaying) {
         setVisualizerBars(
@@ -36,16 +56,31 @@ export default function SongCard({ title, artist, src }: SongCardProps) {
     return () => clearInterval(interval)
   }, [isPlaying])
 
-  useEffect(() => {
-    audio.addEventListener('ended', () => setIsPlaying(false))
-    return () => {
-      audio.pause()
-      audio.removeEventListener('ended', () => setIsPlaying(false))
-    }
-  }, [audio])
+  const formatTime = (time: number) => {
+    const minutes = Math.floor(time / 60)
+    const seconds = Math.floor(time % 60)
+    return `${minutes}:${seconds.toString().padStart(2, '0')}`
+  }
 
   return (
     <div className="rounded-lg border-2 border-pink-200 bg-white/80 p-4">
+      {/* Seek Slider */}
+      <div>
+        <input
+          type="range"
+          min="0"
+          max={duration || 0}
+          step="0.1"
+          value={currentTime}
+          onChange={handleSliderChange}
+          className="w-full accent-pink-600"
+        />
+        <div className="mt-2 flex justify-between text-sm font-pixel text-pink-700">
+          <span>{formatTime(currentTime)}</span>
+          <span>{formatTime(duration)}</span>
+        </div>
+      </div>
+
       <div className="flex items-center justify-between">
         {/* Song Info */}
         <div>
