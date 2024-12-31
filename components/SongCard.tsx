@@ -97,16 +97,18 @@ export default function SongCard({ title, artist, src }: SongCardProps) {
         </button>
       </div>
 
-      {/* Visualizer */}
-      <div className="mt-4 flex items-end gap-1">
-        {visualizerBars.map((height, i) => (
-          <div
-            key={i}
-            className="w-2 rounded bg-pink-300 transition-all"
-            style={{ height: `${height}px` }}
-          />
-        ))}
-      </div>
+      {/* Visualizer: only show if playing */}
+      {isPlaying && (
+        <div className="mt-4 flex items-end gap-1">
+          {visualizerBars.map((height, i) => (
+            <div
+              key={i}
+              className="w-2 rounded bg-pink-300 transition-all"
+              style={{ height: `${height}px` }}
+            />
+          ))}
+        </div>
+      )}
     </div>
   )
 }
