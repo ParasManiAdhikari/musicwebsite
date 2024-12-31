@@ -3,17 +3,15 @@
 import { useState, useEffect } from 'react'
 import { Play, Pause } from 'lucide-react'
 
-// Import the MP3 file from the same folder
-import audioFile from './hot.mp3'
-
 type SongCardProps = {
   title: string
   artist: string
+  src: string // URL to the song file
 }
 
-export default function SongCard({ title, artist }: SongCardProps) {
+export default function SongCard({ title, artist, src }: SongCardProps) {
   const [isPlaying, setIsPlaying] = useState(false)
-  const [audio] = useState(new Audio(audioFile))
+  const [audio] = useState(new Audio(src))
   const [visualizerBars, setVisualizerBars] = useState<number[]>(new Array(10).fill(0))
 
   const togglePlayPause = () => {
