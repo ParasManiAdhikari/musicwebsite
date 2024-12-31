@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import { Heart, Music, GamepadIcon, BookOpen, Link2, MessageSquare } from 'lucide-react'
 import Window from '@/components/Window'
+import SongCard from '@/components/SongCard'
 
 export default function RetroWebsite() {
   const [visitorCount, setVisitorCount] = useState(1337)
@@ -67,10 +68,10 @@ export default function RetroWebsite() {
                       key={i}
                       className="aspect-square rounded-lg bg-pink-200/50 p-2"
                     >
-                      <img
-                        src={`/placeholder.svg?height=200&width=200`}
-                        alt={`Gallery image ${i}`}
-                        className="h-full w-full rounded object-cover"
+                      <SongCard
+                        title="Retro Beats"
+                        artist="DJ Pixel"
+                        src='/audio/hot.mp3'
                       />
                     </div>
                   ))}
