@@ -7,7 +7,6 @@ import SongCard from '@/components/SongCard'
 
 export default function RetroWebsite() {
   const [visitorCount, setVisitorCount] = useState(1337)
-  const [currentStatus, setCurrentStatus] = useState("✨ enjoying summer vibes ✨")
 
   return (
     <div className="min-h-screen bg-pink-50" style={{
@@ -22,7 +21,7 @@ export default function RetroWebsite() {
         {/* Header */}
         <header className="mb-8 text-center">
           <h1 className="mb-4 animate-pulse font-pixel text-4xl font-bold tracking-wide text-green-600">
-            ⋆｡°✩ welcome to my website! ✩°｡⋆
+            ⋆｡°✩ browse lovekinesis.com on high dosages only! ✩°｡⋆
           </h1>
         </header>
 
@@ -108,7 +107,7 @@ export default function RetroWebsite() {
 
             <Window title="status ♡">
               <div className="p-4">
-                <p className="font-pixel text-pink-700">{currentStatus}</p>
+                <p className="font-pixel text-pink-700">new audio just added! <br/> check it out!!</p>
               </div>
             </Window>
 
