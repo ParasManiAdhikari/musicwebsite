@@ -79,59 +79,23 @@ export default function RetroWebsite() {
       backgroundSize: '20px 20px',
       backgroundPosition: '0 0, 10px 10px'
     }}>
-      <div className="mx-auto max-w-6xl px-4 py-8">
+      <div className="mx-auto max-w-7xl px-4 py-8">
+  
         {/* Header */}
         <header className="mb-8 text-center">
           <h1 className="mb-4 animate-pulse font-pixel text-4xl font-bold tracking-wide text-green-600">
             ⋆｡°✩ browse lovekinesis.com on high dosages only! ✩°｡⋆
           </h1>
         </header>
-
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-[250px_1fr_250px]">
-          {/* Left Sidebar */}
-          <div className="space-y-4">
-            <Window title="main menu ♡">
-              <nav className="space-y-2 p-4">
-                {[
-                  { icon: Heart, text: 'about' },
-                  { icon: Music, text: 'music + lyrics' },
-                  { icon: GamepadIcon, text: 'games' },
-                  { icon: BookOpen, text: 'blog' },
-                  { icon: Link2, text: 'links' },
-                  { icon: MessageSquare, text: 'guestbook' },
-                ].map((item, i) => (
-                  <a
-                    key={i}
-                    href="#"
-                    className="flex items-center gap-2 rounded-lg px-3 py-2 text-pink-700 transition-colors hover:bg-pink-100"
-                  >
-                    <item.icon className="h-4 w-4" />
-                    <span className="font-pixel">{item.text}</span>
-                  </a>
-                ))}
-              </nav>
-            </Window>
-
-            <Window title="♡ updates ♡">
-              <div className="space-y-2 p-4 font-pixel text-pink-700">
-                <p>→ new song released! check my music page</p>
-                <p>→ updated my gaming collection</p>
-                <p>→ added new pixel art to gallery</p>
-              </div>
-            </Window>
-
-            <Window title="visitor count ♡">
-              <div className="p-4 text-center font-pixel text-pink-700">
-                {visitorCount.toString().padStart(6, '0')}
-              </div>
-            </Window>
-          </div>
-
+  
+        {/* Body */}
+        <div className="flex flex-col md:flex-row justify-center gap-6 mb-6">
+  
           {/* Main Content */}
-          <div className="space-y-6">
+          <div className="space-y-6 flex-grow max-w-4xl">
             <Window title="♡ for you ♡">
               <div className="space-y-4 p-6">
-                
+  
                 {/* Filters and Search */}
                 <div className="space-y-4 bg-pink-200 border border-pink-400 p-4 rounded-md shadow-inner" style={{
                   fontFamily: '"Lucida Console", Monaco, monospace',
@@ -149,7 +113,7 @@ export default function RetroWebsite() {
                       fontFamily: '"Lucida Console", Monaco, monospace'
                     }}
                   />
-                  <div className="flex gap-4 items-center">
+                  <div className="flex flex-col md:flex-row gap-4 items-center">
                     <select
                       className="rounded border border-pink-500 px-3 py-2 bg-pink-100 text-pink-800 focus:outline-none focus:ring focus:ring-pink-400"
                       value={sortOption}
@@ -179,9 +143,8 @@ export default function RetroWebsite() {
                     </select>
                   </div>
                 </div>
-
-
-                <div className="grid grid-cols-2 gap-4">
+  
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 gap-4">
                   {currentTracks.map((track) => (
                     <div key={track.id} className="rounded-lg bg-pink-200/50 p-2">
                       <Link
@@ -198,7 +161,7 @@ export default function RetroWebsite() {
                 </div>
               </div>
             </Window>
-
+  
             {/* Page Number */}
             <div className="mt-8 text-center">
               <div className="inline-flex gap-4">
@@ -215,41 +178,69 @@ export default function RetroWebsite() {
               </div>
             </div>
           </div>
-
+  
           {/* Right Sidebar */}
           <div className="space-y-4">
-            <Window title="currently playing ♡">
-              <div className="space-y-2 p-4">
-                <div className="rounded-lg bg-pink-100 p-3">
-                  <h3 className="font-pixel text-green-600">Fire Emblem</h3>
-                  <p className="text-sm text-pink-600">Chapter 7: The Sealed Forest</p>
-                </div>
-                <div className="rounded-lg bg-pink-100 p-3">
-                  <h3 className="font-pixel text-green-600">Xenoblade 3</h3>
-                  <p className="text-sm text-pink-600">45 hours played</p>
-                </div>
-              </div>
-            </Window>
-
-            <Window title="status ♡">
-              <div className="p-4">
-                <p className="font-pixel text-pink-700">new audio just added! <br /> check it out!!</p>
-              </div>
-            </Window>
-
-            <Window title="random stuff ♡">
-              <div className="grid grid-cols-3 gap-2 p-4">
-                {[...Array(9)].map((_, i) => (
-                  <button
+            <Window title="main menu ♡">
+              <nav className="space-y-2 p-4">
+                {[{
+                  icon: Heart,
+                  text: 'about'
+                }, {
+                  icon: Music,
+                  text: 'music + lyrics'
+                }, {
+                  icon: GamepadIcon,
+                  text: 'games'
+                }, {
+                  icon: BookOpen,
+                  text: 'blog'
+                }, {
+                  icon: Link2,
+                  text: 'links'
+                }, {
+                  icon: MessageSquare,
+                  text: 'guestbook'
+                }].map((item, i) => (
+                  <a
                     key={i}
-                    className="aspect-square rounded bg-pink-100 transition-colors hover:bg-pink-200"
-                  />
+                    href="#"
+                    className="flex items-center gap-2 rounded-lg px-3 py-2 text-pink-700 transition-colors hover:bg-pink-100"
+                  >
+                    <item.icon className="h-4 w-4" />
+                    <span className="font-pixel">{item.text}</span>
+                  </a>
                 ))}
+              </nav>
+            </Window>
+  
+            <Window title="♡ updates ♡">
+              <div className="space-y-2 p-4 font-pixel text-pink-700">
+                <p>→ new song released! check my music page</p>
+                <p>→ updated my gaming collection</p>
+                <p>→ added new pixel art to gallery</p>
+              </div>
+            </Window>
+  
+            <Window title="visitor count ♡">
+              <div className="p-4 text-center font-pixel text-pink-700">
+                {visitorCount.toString().padStart(6, '0')}
               </div>
             </Window>
           </div>
         </div>
+  
+        {/* Footer */}
+        <Window title="currently playing ♡">
+          <div className="space-y-2 p-4">
+            <div className="rounded-lg bg-pink-100 p-3">
+              <h3 className="font-pixel text-green-600">Fire Emblem</h3>
+              <p className="text-sm text-pink-600">Chapter 7: The Sealed Forest</p>
+            </div>
+          </div>
+        </Window>
+  
       </div>
     </div>
   )
-}
+}  
