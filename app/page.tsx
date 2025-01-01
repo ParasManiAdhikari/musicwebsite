@@ -87,9 +87,17 @@ export default function RetroWebsite() {
             ⋆｡°✩ browse lovekinesis.com on high dosages only! ✩°｡⋆
           </h1>
         </header>
+
+        {/* Currently Playing */}
+          <div className="space-y-2 p-4 text-center">
+            <div className="rounded-lg bg-pink-100 p-3">
+              <h3 className="font-pixel text-green-600">Fire Emblem</h3>
+              <p className="text-sm text-pink-600">Chapter 7: The Sealed Forest</p>
+            </div>
+          </div>
   
         {/* Body */}
-        <div className="flex flex-col md:flex-row justify-center gap-6 mb-6">
+        <div className="flex flex-col md:flex-row justify-center gap-6 mt-6">
   
           {/* Main Content */}
           <div className="space-y-6 flex-grow max-w-4xl">
@@ -181,7 +189,7 @@ export default function RetroWebsite() {
   
           {/* Right Sidebar */}
           <div className="space-y-4">
-            <Window title="main menu ♡">
+            <Window title="profile ♡">
               <nav className="space-y-2 p-4">
                 {[{
                   icon: Heart,
@@ -219,26 +227,17 @@ export default function RetroWebsite() {
                 <p>→ new song released! check my music page</p>
                 <p>→ updated my gaming collection</p>
                 <p>→ added new pixel art to gallery</p>
+                <p>→ added new pixel art to gallery</p>
               </div>
             </Window>
   
             <Window title="visitor count ♡">
-              <div className="p-4 text-center font-pixel text-pink-700">
+              <div className="p-4 text-pink-700">
                 {visitorCount.toString().padStart(6, '0')}
               </div>
             </Window>
           </div>
         </div>
-  
-        {/* Footer */}
-        <Window title="currently playing ♡">
-          <div className="space-y-2 p-4">
-            <div className="rounded-lg bg-pink-100 p-3">
-              <h3 className="font-pixel text-green-600">Fire Emblem</h3>
-              <p className="text-sm text-pink-600">Chapter 7: The Sealed Forest</p>
-            </div>
-          </div>
-        </Window>
   
       </div>
     </div>
