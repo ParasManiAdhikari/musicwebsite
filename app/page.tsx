@@ -17,8 +17,29 @@ export default function RetroWebsite() {
     { title: 'Synthwave Dreams', artist: 'DJ Neon', category: 'Synthwave', length: '4:00', id: 2 },
     { title: 'Pixelated World', artist: 'DJ Retro', category: 'Chiptune', length: '2:50', id: 3 },
     { title: 'Cosmic Journey', artist: 'DJ Stellar', category: 'Ambient', length: '5:30', id: 4 },
-    // Add more tracks as needed
+    { title: 'Neon Lights', artist: 'DJ Nightfall', category: 'Synthwave', length: '4:15', id: 5 },
+    { title: 'Techno Vibes', artist: 'DJ Electro', category: 'Electronic', length: '3:40', id: 6 },
+    { title: 'Pixel Pulse', artist: 'DJ Retro', category: 'Chiptune', length: '3:10', id: 7 },
+    { title: 'Mystic Waves', artist: 'DJ Wave', category: 'Ambient', length: '5:00', id: 8 },
+    { title: 'Digital Dreams', artist: 'DJ Dreamer', category: 'Electronic', length: '4:30', id: 9 },
+    { title: 'Electric Skies', artist: 'DJ Sonic', category: 'Synthwave', length: '3:55', id: 10 },
+    { title: 'Blazing Stars', artist: 'DJ Stellar', category: 'Ambient', length: '6:00', id: 11 },
+    { title: 'Retro Future', artist: 'DJ Neon', category: 'Synthwave', length: '3:25', id: 12 },
+    { title: 'Pixel Art', artist: 'DJ Retro', category: 'Chiptune', length: '3:00', id: 13 },
+    { title: 'Virtual Reality', artist: 'DJ Techno', category: 'Electronic', length: '4:40', id: 14 },
+    { title: 'Galactic Voyage', artist: 'DJ Galaxy', category: 'Ambient', length: '5:50', id: 15 },
+    { title: 'Neon Paradise', artist: 'DJ Nightfall', category: 'Synthwave', length: '4:05', id: 16 },
+    { title: 'Future Bass', artist: 'DJ Wave', category: 'Electronic', length: '3:35', id: 17 },
+    { title: 'Pixel Quest', artist: 'DJ Retro', category: 'Chiptune', length: '2:45', id: 18 },
+    { title: 'Retro Dreams', artist: 'DJ Dreamer', category: 'Electronic', length: '4:50', id: 19 },
+    { title: 'Cosmic Rush', artist: 'DJ Stellar', category: 'Ambient', length: '5:20', id: 20 },
+    { title: 'Synth Horizon', artist: 'DJ Neon', category: 'Synthwave', length: '4:10', id: 21 },
+    { title: 'Pixel Pulse', artist: 'DJ Electro', category: 'Chiptune', length: '3:30', id: 22 },
+    { title: 'Electronic Dawn', artist: 'DJ Electro', category: 'Electronic', length: '4:20', id: 23 },
+    { title: 'Retro Soundtrack', artist: 'DJ Retro', category: 'Chiptune', length: '3:15', id: 24 },
+    { title: 'Starry Nights', artist: 'DJ Galaxy', category: 'Ambient', length: '5:10', id: 25 },
   ]
+  
 
   // Filter and Sort Tracks
   const filteredTracks = tracks
