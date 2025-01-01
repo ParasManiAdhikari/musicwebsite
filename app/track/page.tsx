@@ -33,7 +33,7 @@ const TrackPage = () => {
     artist: 'DJ Pixel',
     category: 'Electronic',
     length: '3:45',
-    src: '/hot.mp3', // Example audio source (use an actual path or URL)
+    src: '/beep.mp3', // Example audio source (use an actual path or URL)
   }
 
   if (!trackId) return <div>Loading...</div> // Handle loading state
