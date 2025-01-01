@@ -39,7 +39,7 @@ export default function RetroWebsite() {
     { title: 'Retro Soundtrack', artist: 'DJ Retro', category: 'Chiptune', length: '3:15', id: 24 },
     { title: 'Starry Nights', artist: 'DJ Galaxy', category: 'Ambient', length: '5:10', id: 25 },
   ]
-  
+
 
   // Filter and Sort Tracks
   const filteredTracks = tracks
@@ -55,7 +55,7 @@ export default function RetroWebsite() {
     })
 
   // Pagination logic
-  const tracksPerPage = 20
+  const tracksPerPage = 12
   const totalPages = Math.ceil(filteredTracks.length / tracksPerPage)
   const currentTracks = filteredTracks.slice((currentPage - 1) * tracksPerPage, currentPage * tracksPerPage)
 
@@ -92,7 +92,7 @@ export default function RetroWebsite() {
           <div className="space-y-4">
             <Window title="main menu ♡">
               <nav className="space-y-2 p-4">
-                {[ 
+                {[
                   { icon: Heart, text: 'about' },
                   { icon: Music, text: 'music + lyrics' },
                   { icon: GamepadIcon, text: 'games' },
@@ -131,37 +131,55 @@ export default function RetroWebsite() {
           <div className="space-y-6">
             <Window title="♡ for you ♡">
               <div className="space-y-4 p-6">
+                
                 {/* Filters and Search */}
-                <div className="space-y-4">
+                <div className="space-y-4 bg-pink-200 border border-pink-400 p-4 rounded-md shadow-inner" style={{
+                  fontFamily: '"Lucida Console", Monaco, monospace',
+                  boxShadow: 'inset 4px 4px 8px rgba(0, 0, 0, 0.3)',
+                  backgroundImage: 'linear-gradient(to bottom, #ffe4e6, #fbcfe8)'
+                }}>
                   <input
                     type="text"
-                    className="w-full rounded-md px-4 py-2"
-                    placeholder="Search tracks..."
+                    className="w-full rounded border border-pink-500 px-3 py-2 bg-pink-100 text-pink-800 focus:outline-none focus:ring focus:ring-pink-400"
+                    placeholder="🔍 Search tracks..."
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
+                    style={{
+                      boxShadow: 'inset 2px 2px 4px rgba(0, 0, 0, 0.2)',
+                      fontFamily: '"Lucida Console", Monaco, monospace'
+                    }}
                   />
-                  <div className="flex gap-4">
+                  <div className="flex gap-4 items-center">
                     <select
-                      className="rounded-md px-4 py-2"
+                      className="rounded border border-pink-500 px-3 py-2 bg-pink-100 text-pink-800 focus:outline-none focus:ring focus:ring-pink-400"
                       value={sortOption}
                       onChange={(e) => setSortOption(e.target.value)}
+                      style={{
+                        boxShadow: 'inset 2px 2px 4px rgba(0, 0, 0, 0.2)',
+                        fontFamily: '"Lucida Console", Monaco, monospace'
+                      }}
                     >
-                      <option value="newest">Sort by Newest</option>
-                      <option value="longest">Sort by Longest</option>
+                      <option value="newest">🆕 Sort by Newest</option>
+                      <option value="longest">⏳ Sort by Longest</option>
                     </select>
                     <select
-                      className="rounded-md px-4 py-2"
+                      className="rounded border border-pink-500 px-3 py-2 bg-pink-100 text-pink-800 focus:outline-none focus:ring focus:ring-pink-400"
                       value={selectedCategory}
                       onChange={(e) => setSelectedCategory(e.target.value)}
+                      style={{
+                        boxShadow: 'inset 2px 2px 4px rgba(0, 0, 0, 0.2)',
+                        fontFamily: '"Lucida Console", Monaco, monospace'
+                      }}
                     >
-                      <option value="All">All Categories</option>
-                      <option value="Electronic">Electronic</option>
-                      <option value="Synthwave">Synthwave</option>
-                      <option value="Chiptune">Chiptune</option>
-                      <option value="Ambient">Ambient</option>
+                      <option value="All">🌐 All Categories</option>
+                      <option value="Electronic">🎵 Electronic</option>
+                      <option value="Synthwave">🌌 Synthwave</option>
+                      <option value="Chiptune">🎮 Chiptune</option>
+                      <option value="Ambient">🎧 Ambient</option>
                     </select>
                   </div>
                 </div>
+
 
                 <div className="grid grid-cols-2 gap-4">
                   {currentTracks.map((track) => (
@@ -178,9 +196,6 @@ export default function RetroWebsite() {
                     </div>
                   ))}
                 </div>
-                <p className="text-center font-pixel text-pink-700">
-                  hi! i make electronic music and play lots of games ♡
-                </p>
               </div>
             </Window>
 
@@ -218,7 +233,7 @@ export default function RetroWebsite() {
 
             <Window title="status ♡">
               <div className="p-4">
-                <p className="font-pixel text-pink-700">new audio just added! <br/> check it out!!</p>
+                <p className="font-pixel text-pink-700">new audio just added! <br /> check it out!!</p>
               </div>
             </Window>
 
