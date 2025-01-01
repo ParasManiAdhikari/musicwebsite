@@ -4,6 +4,7 @@ import { useState } from 'react'
 import { Heart, Music, GamepadIcon, BookOpen, Link2, MessageSquare } from 'lucide-react'
 import Link from 'next/link'
 import Window from '@/components/Window'
+import tracks from './tracksData'
 
 export default function RetroWebsite() {
   const [visitorCount, setVisitorCount] = useState(1337)
@@ -11,39 +12,12 @@ export default function RetroWebsite() {
   const [searchTerm, setSearchTerm] = useState('')
   const [sortOption, setSortOption] = useState('newest')
   const [selectedCategory, setSelectedCategory] = useState('All')
-
-  const tracks = [
-    { title: 'Retro Beats', artist: 'DJ Pixel', category: 'Electronic', length: '3:45', id: 1 },
-    { title: 'Synthwave Dreams', artist: 'DJ Neon', category: 'Synthwave', length: '4:00', id: 2 },
-    { title: 'Pixelated World', artist: 'DJ Retro', category: 'Chiptune', length: '2:50', id: 3 },
-    { title: 'Cosmic Journey', artist: 'DJ Stellar', category: 'Ambient', length: '5:30', id: 4 },
-    { title: 'Neon Lights', artist: 'DJ Nightfall', category: 'Synthwave', length: '4:15', id: 5 },
-    { title: 'Techno Vibes', artist: 'DJ Electro', category: 'Electronic', length: '3:40', id: 6 },
-    { title: 'Pixel Pulse', artist: 'DJ Retro', category: 'Chiptune', length: '3:10', id: 7 },
-    { title: 'Mystic Waves', artist: 'DJ Wave', category: 'Ambient', length: '5:00', id: 8 },
-    { title: 'Digital Dreams', artist: 'DJ Dreamer', category: 'Electronic', length: '4:30', id: 9 },
-    { title: 'Electric Skies', artist: 'DJ Sonic', category: 'Synthwave', length: '3:55', id: 10 },
-    { title: 'Blazing Stars', artist: 'DJ Stellar', category: 'Ambient', length: '6:00', id: 11 },
-    { title: 'Retro Future', artist: 'DJ Neon', category: 'Synthwave', length: '3:25', id: 12 },
-    { title: 'Pixel Art', artist: 'DJ Retro', category: 'Chiptune', length: '3:00', id: 13 },
-    { title: 'Virtual Reality', artist: 'DJ Techno', category: 'Electronic', length: '4:40', id: 14 },
-    { title: 'Galactic Voyage', artist: 'DJ Galaxy', category: 'Ambient', length: '5:50', id: 15 },
-    { title: 'Neon Paradise', artist: 'DJ Nightfall', category: 'Synthwave', length: '4:05', id: 16 },
-    { title: 'Future Bass', artist: 'DJ Wave', category: 'Electronic', length: '3:35', id: 17 },
-    { title: 'Pixel Quest', artist: 'DJ Retro', category: 'Chiptune', length: '2:45', id: 18 },
-    { title: 'Retro Dreams', artist: 'DJ Dreamer', category: 'Electronic', length: '4:50', id: 19 },
-    { title: 'Cosmic Rush', artist: 'DJ Stellar', category: 'Ambient', length: '5:20', id: 20 },
-    { title: 'Synth Horizon', artist: 'DJ Neon', category: 'Synthwave', length: '4:10', id: 21 },
-    { title: 'Pixel Pulse', artist: 'DJ Electro', category: 'Chiptune', length: '3:30', id: 22 },
-    { title: 'Electronic Dawn', artist: 'DJ Electro', category: 'Electronic', length: '4:20', id: 23 },
-    { title: 'Retro Soundtrack', artist: 'DJ Retro', category: 'Chiptune', length: '3:15', id: 24 },
-    { title: 'Starry Nights', artist: 'DJ Galaxy', category: 'Ambient', length: '5:10', id: 25 },
-  ]
-
+  const [selectedBestFor, setSelectedBestFor] = useState('All')
 
   // Filter and Sort Tracks
   const filteredTracks = tracks
     .filter(track => {
+      if (selectedBestFor !== 'All' && track.bestFor !== selectedBestFor) return false
       if (selectedCategory !== 'All' && track.category !== selectedCategory) return false
       if (!track.title.toLowerCase().includes(searchTerm.toLowerCase())) return false
       return true
@@ -84,7 +58,7 @@ export default function RetroWebsite() {
         {/* Header */}
         <header className="mb-8 text-center">
           <h1 className="mb-4 animate-pulse font-pixel text-4xl font-bold tracking-wide text-green-600">
-            ⋆｡°✩ browse lovekinesis.com on high dosages only! ✩°｡⋆
+            ⋆｡°✩  L O V E K I N E S I S . C O M ✩°｡⋆
           </h1>
         </header>
 
@@ -149,6 +123,22 @@ export default function RetroWebsite() {
                       <option value="Chiptune">🎮 Chiptune</option>
                       <option value="Ambient">🎧 Ambient</option>
                     </select>
+
+                    <select
+                      className="rounded border border-pink-500 px-3 py-2 bg-pink-100 text-pink-800 focus:outline-none focus:ring focus:ring-pink-400"
+                      value={selectedBestFor}
+                      onChange={(e) => setSelectedBestFor(e.target.value)}
+                      style={{
+                        boxShadow: 'inset 2px 2px 4px rgba(0, 0, 0, 0.2)',
+                        fontFamily: '"Lucida Console", Monaco, monospace'
+                      }}
+                    >
+                      <option value="All">🌍 best for all</option>
+                      <option value="Couples">💖 couples</option>
+                      <option value="Men">👨 men</option>
+                      <option value="Women">👩 women</option>
+                      <option value="Nonbinary">⚧ nonbinary</option>
+                    </select>
                   </div>
                 </div>
   
@@ -157,11 +147,11 @@ export default function RetroWebsite() {
                     <div key={track.id} className="rounded-lg bg-pink-200/50 p-2">
                       <Link
                         href={`/track`} // Link to the track detail page
-                        className="font-pixel text-pink-700 hover:underline"
+                        className="font-pixel text-pink-900 hover:underline"
                       >
                         <div>{track.title} - {track.artist}</div>
-                        <div className="text-sm text-pink-600">
-                          Category: {track.category} | Length: {track.length}
+                        <div className="text-sm text-pink-400">
+                          {track.length}  •  {track.category}  •  {track.bestFor}
                         </div>
                       </Link>
                     </div>
