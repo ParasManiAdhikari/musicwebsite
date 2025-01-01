@@ -72,7 +72,7 @@ const TrackPage = () => {
   }
 
   return (
-    <div className="min-h-screen bg-pink-50 flex items-center justify-center">
+    <div className="min-h-screen bg-pink-50 dark:bg-gray-900 flex items-center justify-center">
       <div className="mx-auto max-w-6xl px-4 py-8">
 
         {/* SongCard Component */}
@@ -105,12 +105,12 @@ const TrackPage = () => {
 
         {/* Comment Section */}
         <div className="mt-8">
-          <h2 className="font-pixel text-2xl text-pink-700">Comments</h2>
+          <h2 className="font-pixel text-2xl text-pink-700 dark:text-pink-300">Comments</h2>
           <div className="space-y-4">
             {comments.map((comment) => (
-              <div key={comment.id} className="p-4 bg-pink-100 rounded-lg">
-                <p className="font-pixel text-green-600 inline">{comment.user}:</p> {/* Username in green */}
-                <p className="font-pixel text-pink-700 inline ml-2">{comment.text}</p>
+              <div key={comment.id} className="p-4 bg-pink-100 dark:bg-gray-800 rounded-lg">
+                <p className="font-pixel text-green-600 dark:text-green-400 inline">{comment.user}:</p> {/* Username in green */}
+                <p className="font-pixel text-pink-700 dark:text-pink-300 inline ml-2">{comment.text}</p>
               </div>
             ))}
           </div>
@@ -120,7 +120,7 @@ const TrackPage = () => {
             <textarea
               value={newComment}
               onChange={(e: ChangeEvent<HTMLTextAreaElement>) => setNewComment(e.target.value)}
-              className="w-full p-3 rounded-lg bg-pink-100 text-pink-700 font-pixel"
+              className="w-full p-3 rounded-lg bg-pink-100 dark:bg-gray-800 text-pink-700 dark:text-pink-300 font-pixel"
               placeholder="Leave a comment..."
               rows={3}
             />

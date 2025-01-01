@@ -1,7 +1,7 @@
 'use client'
 
-import { useState } from 'react'
-import { Heart, Music, GamepadIcon, BookOpen, Link2, MessageSquare } from 'lucide-react'
+import { useState, useEffect } from 'react'
+import { Heart, Music, GamepadIcon, BookOpen, Link2, MessageSquare, Sun, Moon } from 'lucide-react'
 import Link from 'next/link'
 import Window from '@/components/Window'
 import tracks from './tracksData'
@@ -13,6 +13,11 @@ export default function RetroWebsite() {
   const [sortOption, setSortOption] = useState('newest')
   const [selectedCategory, setSelectedCategory] = useState('All')
   const [selectedBestFor, setSelectedBestFor] = useState('All')
+  const [isDarkMode, setIsDarkMode] = useState(true)
+
+  useEffect(() => {
+    document.documentElement.classList.toggle('dark', isDarkMode)
+  }, [isDarkMode])
 
   // Filter and Sort Tracks
   const filteredTracks = tracks
@@ -45,7 +50,7 @@ export default function RetroWebsite() {
   }
 
   return (
-    <div className="min-h-screen bg-pink-50" style={{
+    <div className="min-h-screen bg-pink-50 dark:bg-gray-900" style={{
       backgroundImage: `
         radial-gradient(#ff69b440 1px, transparent 1px),
         radial-gradient(#ff69b440 1px, transparent 1px)
@@ -57,18 +62,24 @@ export default function RetroWebsite() {
   
         {/* Header */}
         <header className="mb-8 text-center">
-          <h1 className="mb-4 animate-pulse font-pixel text-4xl font-bold tracking-wide text-green-600">
+          <h1 className="mb-4 animate-pulse font-pixel text-4xl font-bold tracking-wide text-green-600 dark:text-green-400">
             ⋆｡°✩  L O V E K I N E S I S . C O M ✩°｡⋆
           </h1>
+          <button
+            onClick={() => setIsDarkMode(!isDarkMode)}
+            className="rounded-full bg-pink-200 dark:bg-gray-700 p-2 transition-colors"
+          >
+            {isDarkMode ? <Sun className="h-6 w-6 text-yellow-500" /> : <Moon className="h-6 w-6 text-gray-800" />}
+          </button>
         </header>
 
         {/* Currently Playing */}
-          <div className="space-y-2 p-4 text-center">
-            <div className="rounded-lg bg-pink-100 p-3">
-              <h3 className="font-pixel text-green-600">Fire Emblem</h3>
-              <p className="text-sm text-pink-600">Chapter 7: The Sealed Forest</p>
-            </div>
+        <div className="space-y-2 p-4 text-center">
+          <div className="rounded-lg bg-pink-100 dark:bg-gray-800 p-3">
+            <h3 className="font-pixel text-green-600 dark:text-green-400">Fire Emblem</h3>
+            <p className="text-sm text-pink-600 dark:text-pink-400">Chapter 7: The Sealed Forest</p>
           </div>
+        </div>
   
         {/* Body */}
         <div className="flex flex-col md:flex-row justify-center gap-6 mt-6">
@@ -79,14 +90,13 @@ export default function RetroWebsite() {
               <div className="space-y-4 p-6">
   
                 {/* Filters and Search */}
-                <div className="space-y-4 bg-pink-200 border border-pink-400 p-4 rounded-md shadow-inner" style={{
+                <div className="space-y-4 bg-pink-200 dark:bg-gray-800 border border-pink-400 dark:border-gray-600 p-4 rounded-md shadow-inner" style={{
                   fontFamily: '"Lucida Console", Monaco, monospace',
-                  boxShadow: 'inset 4px 4px 8px rgba(0, 0, 0, 0.3)',
-                  backgroundImage: 'linear-gradient(to bottom, #ffe4e6, #fbcfe8)'
+                  boxShadow: 'inset 4px 4px 8px rgba(0, 0, 0, 0.3)'
                 }}>
                   <input
                     type="text"
-                    className="w-full rounded border border-pink-500 px-3 py-2 bg-pink-100 text-pink-800 focus:outline-none focus:ring focus:ring-pink-400"
+                    className="w-full rounded border border-pink-500 dark:border-gray-600 px-3 py-2 bg-pink-100 dark:bg-gray-700 text-pink-800 dark:text-pink-300 focus:outline-none focus:ring focus:ring-pink-400 dark:focus:ring-gray-500"
                     placeholder="🔍 Search tracks..."
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
@@ -97,7 +107,7 @@ export default function RetroWebsite() {
                   />
                   <div className="flex flex-col md:flex-row gap-4 items-center">
                     <select
-                      className="rounded border border-pink-500 px-3 py-2 bg-pink-100 text-pink-800 focus:outline-none focus:ring focus:ring-pink-400"
+                      className="rounded border border-pink-500 dark:border-gray-600 px-3 py-2 bg-pink-100 dark:bg-gray-700 text-pink-800 dark:text-pink-300 focus:outline-none focus:ring focus:ring-pink-400 dark:focus:ring-gray-500"
                       value={sortOption}
                       onChange={(e) => setSortOption(e.target.value)}
                       style={{
@@ -109,7 +119,7 @@ export default function RetroWebsite() {
                       <option value="longest">⏳ Sort by Longest</option>
                     </select>
                     <select
-                      className="rounded border border-pink-500 px-3 py-2 bg-pink-100 text-pink-800 focus:outline-none focus:ring focus:ring-pink-400"
+                      className="rounded border border-pink-500 dark:border-gray-600 px-3 py-2 bg-pink-100 dark:bg-gray-700 text-pink-800 dark:text-pink-300 focus:outline-none focus:ring focus:ring-pink-400 dark:focus:ring-gray-500"
                       value={selectedCategory}
                       onChange={(e) => setSelectedCategory(e.target.value)}
                       style={{
@@ -125,7 +135,7 @@ export default function RetroWebsite() {
                     </select>
 
                     <select
-                      className="rounded border border-pink-500 px-3 py-2 bg-pink-100 text-pink-800 focus:outline-none focus:ring focus:ring-pink-400"
+                      className="rounded border border-pink-500 dark:border-gray-600 px-3 py-2 bg-pink-100 dark:bg-gray-700 text-pink-800 dark:text-pink-300 focus:outline-none focus:ring focus:ring-pink-400 dark:focus:ring-gray-500"
                       value={selectedBestFor}
                       onChange={(e) => setSelectedBestFor(e.target.value)}
                       style={{
@@ -144,13 +154,13 @@ export default function RetroWebsite() {
   
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 gap-4">
                   {currentTracks.map((track) => (
-                    <div key={track.id} className="rounded-lg bg-pink-200/50 p-2">
+                    <div key={track.id} className="rounded-lg bg-pink-200/50 dark:bg-gray-800 p-2">
                       <Link
                         href={`/track`} // Link to the track detail page
-                        className="font-pixel text-pink-900 hover:underline"
+                        className="font-pixel text-pink-900 dark:text-pink-300 hover:underline"
                       >
                         <div>{track.title} - {track.artist}</div>
-                        <div className="text-sm text-pink-400">
+                        <div className="text-sm text-pink-400 dark:text-pink-500">
                           {track.length}  •  {track.category}  •  {track.bestFor}
                         </div>
                       </Link>
@@ -167,7 +177,7 @@ export default function RetroWebsite() {
                   <button
                     key={i}
                     onClick={() => handlePageChange(i + 1)}
-                    className={`h-8 w-8 rounded ${i + 1 === currentPage ? 'bg-green-600 text-white' : 'bg-gray-200'} transition-colors`}
+                    className={`h-8 w-8 rounded ${i + 1 === currentPage ? 'bg-green-600 text-white dark:bg-green-400' : 'bg-gray-200 dark:bg-gray-700'} transition-colors`}
                     title={`Page ${i + 1}`}
                   >
                     {i + 1}
@@ -203,7 +213,7 @@ export default function RetroWebsite() {
                   <a
                     key={i}
                     href="#"
-                    className="flex items-center gap-2 rounded-lg px-3 py-2 text-pink-700 transition-colors hover:bg-pink-100"
+                    className="flex items-center gap-2 rounded-lg px-3 py-2 text-pink-700 dark:text-pink-300 transition-colors hover:bg-pink-100 dark:hover:bg-gray-700"
                   >
                     <item.icon className="h-4 w-4" />
                     <span className="font-pixel">{item.text}</span>
@@ -213,7 +223,7 @@ export default function RetroWebsite() {
             </Window>
   
             <Window title="♡ updates ♡">
-              <div className="space-y-2 p-4 font-pixel text-pink-700">
+              <div className="space-y-2 p-4 font-pixel text-pink-700 dark:text-pink-300">
                 <p>→ new song released! check my music page</p>
                 <p>→ updated my gaming collection</p>
                 <p>→ added new pixel art to gallery</p>
@@ -222,7 +232,7 @@ export default function RetroWebsite() {
             </Window>
   
             <Window title="visitor count ♡">
-              <div className="p-4 text-pink-700">
+              <div className="p-4 text-pink-700 dark:text-pink-300">
                 {visitorCount.toString().padStart(6, '0')}
               </div>
             </Window>
@@ -232,4 +242,4 @@ export default function RetroWebsite() {
       </div>
     </div>
   )
-}  
+}
