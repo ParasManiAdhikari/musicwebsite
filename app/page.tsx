@@ -236,6 +236,12 @@ export default function RetroWebsite() {
                 {visitorCount.toString().padStart(6, '0')}
               </div>
             </Window>
+
+            <Window title="login ♡">
+              <nav>
+                <Link href="/login">Login</Link>
+              </nav>
+            </Window>
           </div>
         </div>
   
