@@ -61,7 +61,7 @@ export default function RetroWebsite() {
       <div className="mx-auto max-w-7xl px-4 py-8">
   
         {/* Header */}
-        <header className="mb-8 text-center">
+        <header className="mb-4 text-center">
           <h1 className="mb-4 animate-pulse font-pixel text-4xl font-bold tracking-wide text-green-600 dark:text-green-400">
             ⋆｡°✩  L O V E K I N E S I S . C O M ✩°｡⋆
           </h1>
